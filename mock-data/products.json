@@ -1,0 +1,26 @@
+[{
+  "_id": ObjectID(),
+  "name": "tasa cero",
+  "created_by": "5733dadce33c5e4c12222730",
+  "created_at": "5/12/2015"
+}, {
+  "_id": ObjectID(),
+  "name": "mini cuotas",
+  "created_by": "5733dadce33c5e4c12222730",
+  "created_at": "1/12/2016"
+}, {
+  "_id": ObjectID(),
+  "name": "seguros",
+  "created_by": "5733dadce33c5e4c12222730",
+  "created_at": "3/26/2016"
+}, {
+  "_id": ObjectID(),
+  "name": "sos",
+  "created_by": "5733dadce33c5e4c12222730",
+  "created_at": "12/31/2015"
+}, {
+  "_id": ObjectID(),
+  "name": "pymes",
+  "created_by": "5733dadce33c5e4c12222730",
+  "created_at": "6/26/2015"
+}]

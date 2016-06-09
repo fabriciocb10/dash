@@ -1,0 +1,37 @@
+  <div class="center-block w-xxl w-auto-xs p-v-md">
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center" style="margin-bottom:50px;">
+        <img src="images/credomatic_logo_blanco.png" alt="Bac logo" style="height: 100%;width: auto;">
+      </div>
+        <h2 class="m-l inline" style="text-align:center;display:block">Dashboard</h2>
+    </div>
+
+    <div class="p-lg panel md-whiteframe-z1 text-color m">
+      <div class="m-b text-sm">
+        
+      </div>
+      <form name="loginForm" novalidate ng-submit="login()">
+        <div class="md-form-group float-label">
+          <input type="text" class="md-input" ng-model="loginData.cedula" required>
+          <label>Cédula</label>
+        </div>
+        <div class="md-form-group float-label">
+          <input type="password" class="md-input" ng-model="loginData.password" required>
+          <label>Contraseña</label>
+        </div>      
+        <div class="m-b-md">
+          <p style="color:red;" ng-show="loginData.error">Cédula y/o contraseña incorrecto</p>
+          <p style="color:red;" ng-show="loginData.errorActive">El usuario se encuentra como inactivo</p>
+          <!-- <label class="md-check">
+            <input type="checkbox"><i class="indigo"></i> Keep me signed in
+          </label> -->
+        </div>
+        <button md-ink-ripple type="submit" class="md-btn md-raised pink btn-block p-h-md">Entrar</button>
+      </form>
+    </div>
+
+    <!-- <div class="p-v-lg text-center">
+      <div class="m-b"><button ui-sref="access.forgot-password" class="md-btn">Forgot password?</button></div>
+      <div>Do not have an account? <button ui-sref="access.signup" class="md-btn">Create an account</button></div>
+    </div> -->
+  </div>

@@ -1,0 +1,320 @@
+<div ng-controller="SegurosCtrl">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Facturacion total por mes y semana</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line_1}}, points: { show: true, radius: 3}, lines: { show: true, lineWidth: 1} },
+              { data: {{plot_line_2}}, bars: { show: true, barWidth: 0.4, lineWidth: 1, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
+            ],
+            {
+              colors: ['{{app.color.primary}}', '{{app.color.info}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Colocacion total por mes y semana</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line_1}}, points: { show: true, radius: 3}, lines: { show: true, lineWidth: 1} },
+              { data: {{plot_line_2}}, bars: { show: true, barWidth: 0.4, lineWidth: 1, fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0.4}] } } }
+            ],
+            {
+              colors: ['{{app.color.primary}}', '{{app.color.info}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Facturacion por ejecutivo</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Facturacion por area</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Facturacion por ejecutivo</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel no-border">
+        <span class="font-bold">Facturacion por zona</span>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            {{plot_pie}},
+            {
+              series: { pie: { show: true, innerRadius: 0.6, stroke: { width: 3 }, label: { show: true, threshold: 0.05 } } },
+              colors: ['{{app.color.primary}}','{{app.color.info}}'],
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%s: %p.0%' }
+            }
+          " style="height:240px">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel no-border">
+        <div class="font-bold">Tabla</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel no-border">
+        <span class="font-bold">Facturacion por tipo de producto</span>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            {{plot_pie}},
+            {
+              series: { pie: { show: true, innerRadius: 0.6, stroke: { width: 3 }, label: { show: true, threshold: 0.05 } } },
+              colors: ['{{app.color.primary}}','{{app.color.info}}'],
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%s: %p.0%' }
+            }
+          " style="height:240px">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel no-border">
+        <div class="font-bold">Tabla</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">FCantidad colocada por ejecutivo</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Cantidad colocada por area</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Cantidad colocada por zona</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel no-border">
+        <div class="panel-heading">
+          <span class="font-bold">Facturacion por tipo de producto</span>
+        </div>
+        <div class="panel-body">
+          <div ui-jp="plot" ui-options="
+            [
+              { data: {{plot_line}} },
+              { data: {{plot_line_2}} }
+            ],
+            {
+              bars: { show: true, fill: true,  barWidth: 0.3, lineWidth: 1, fillColor: { colors: [{ opacity: 0.8 }, { opacity: 1}] } },
+              colors: ['{{app.color.info}}','{{app.color.success}}'],
+              series: { shadowSize: 3 },
+              xaxis: { show: true, font: { color: '#ccc' }, position: 'bottom' },
+              yaxis:{ show: true, font: { color: '#ccc' }},
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+              tooltip: true,
+              tooltipOpts: { content: '%x.0 is %y.4',  defaultTheme: false, shifts: { x: 0, y: -40 } }
+            }
+          " style="height:240px" >
+          </div>
+          <span class="font-bold">Tabla</span>
+          <small class="block text-muted">Aqui tabla</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

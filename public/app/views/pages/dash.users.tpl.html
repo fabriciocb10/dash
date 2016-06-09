@@ -1,0 +1,208 @@
+<!-- Lista de usarios -->
+<div class="row">
+	<div class="col-sm-9">
+		<h1>Usuarios</h1>
+		<br>
+		<button md-ink-ripple="" class="md-btn md-flat m-b btn-fw text-info" data-toggle="modal" style="color: #004990" data-target="#create-modal">Crear usuario<div class="md-ripple-container"></div></button>
+		<div class="md-list md-whiteframe-z0 bg-white m-b">
+			<div class="md-list-item" style="position:relative;" ng-repeat="user in users">
+				<div class="md-list-item-left">
+					<img src="images/a7.jpg" class="w-full circle">
+				</div>
+				<div class="md-list-item-content">
+					<h3 class="text-md">{{user.name | capitalize}}</h3>
+					<div><small class="font-thin">{{getRol(user.rol)}}</small></div>
+				</div>
+				<div style="position:absolute;top:20px;right:16px;">
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw" style="background-color: #004990 !important; color: white;" data-toggle="modal" data-target="#edit-modal" ng-click="getUser(user._id)">Editar<div class="md-ripple-container"></div></button>
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw red" ng-click="deleteUser(user._id, $index)">Borrar<div class="md-ripple-container"></div></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- formulario para crear usuario -->
+<div id="create-modal" class="modal fade" role="dialog">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3" style="margin-top:60px; padding:0">
+		<div class="panel-heading font-bold">Crear usuario</div>
+		<div class="panel-body">
+			<form name="userForm" id="newUserForm" class="form-horizontal" role="form" novalidate ng-submit="createUser(userForm)">
+
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.name" name="name" ng-required="true" ng-pattern="/[a-zA-ZÑÁÉÍÓÚáéíóú][a-zA-Zñáéíóú ]{1,}/">
+					<label>Nombre</label>
+					<p style="color:red;" ng-show="userForm.name.$invalid && !userForm.name.$pristine">Requerido</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.last_name_1" name="last_name_1" ng-required="true" ng-pattern="/[a-zA-ZÑÁÉÍÓÚáéíóú][a-zA-Zñáéíóú ]{1,}/">
+					<label>Apellido 1</label>
+					<p style="color:red;" ng-show="userForm.last_name_1.$invalid && !userForm.last_name_1.$pristine">Requerido</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.last_name_2" name="last_name_2" ng-required="true" ng-pattern="/[a-zA-ZÑÁÉÍÓÚáéíóú][a-zA-Zñáéíóú ]{1,}/">
+					<label>Apellido 2</label>
+					<p style="color:red;" ng-show="userForm.last_name_2.$invalid && !userForm.last_name_2.$pristine">Requerido</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.cedula" name="cedula" ng-required="true" ng-pattern="/[0-9 ]\-([0-9 ]{4})\-[0-9]{4}/">
+					<label>Cédula (Ejemp: "1-2345-6789")</label>
+					<p style="color:red;" ng-show="userForm.cedula.$invalid && !userForm.cedula.$pristine">Requerido (Ejemp: "1-2345-6789")</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.email" name="email" ng-required="true" ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
+					<label>Email</label>
+					<p style="color:red;" ng-show="userForm.email.$invalid && !userForm.email.$pristine">Ingrese un formato de email.(ejem: ejem@ejem.com)</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input type="password" class="md-input" ng-model="newUser.password" name="password" ng-required="true" ng-pattern='/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/'>
+					<label>Contraseña de usuario</label>
+					<div ng-show="userForm.password.$invalid && !userForm.password.$pristine">
+						<p style="color:red;">Mínimo 6 caracteres</p>
+						<p style="color:red;">Mínimo una letra mayúscula</p>
+						<p style="color:red;">Mínimo un número</p>
+					</div>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input type="password" class="md-input" ng-model="newUser.passwordConfirm" name="passwordConfirm" ng-required="true">
+					<label>Confirmar contraseña de usuario</label>
+					<div ng-show="newUser.password != newUser.passwordConfirm">
+						<p style="color:red;">Debe confirmar correctamente la contraseña</p>
+					</div>
+				</div>
+
+				<div class="md-form-group float-label">
+					<input class="md-input" ng-model="newUser.phone" name="phone" ng-required="true" ng-pattern="/^([0-9])*$/">
+					<label>Teléfono</label>
+					<p style="color:red;" ng-show="userForm.phone.$invalid && !userForm.phone.$pristine">Requerido (Ejemp: "12345678")</p>
+				</div>
+
+				<div class="md-form-group float-label">
+					<ui-select ng-model="newUser.rol" theme="bootstrap">
+						<ui-select-match placeholder="Seleccione un rol">{{$select.selected.text}}</ui-select-match>
+						<ui-select-choices repeat="rol in rolList">
+							<div ng-bind-html="rol.text | highlight: $select.search"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+				<p style="color:red;" ng-show="userForm.$submitted && !newUser.rol">Requerido</p>
+
+				<div ng-if="formError.duplicateCedula || formError.duplicateEmail">
+					<br>
+					<p style="color:red;" ng-show="formError.duplicateCedula">Esa cédula ya existe</p>
+					<p style="color:red;" ng-show="formError.duplicateEmail">Ese email ya existe</p>
+					<br>
+				</div>
+
+
+				<div style="display:inline-block;margin:auto;position:relative;left:50%;transform:translateX(-50%);">
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw green" type="submit">Aceptar<div class="md-ripple-container"></div></button>
+
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw red" data-toggle="modal" data-target="#create-modal" >Cancelar<div class="md-ripple-container"></div></button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- formulario para editar usuario -->
+<div id="edit-modal" class="modal fade" role="dialog">
+	<div class="panel panel-default col-sm-6 col-sm-offset-3" style="margin-top:60px; padding:0">
+		<div class="panel-heading font-bold">Editar usuario</div>
+		<div class="panel-body">
+			<div class="form-horizontal">
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Nombre:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.name">{{ userEditable.name || 'empty' | capitalize}}</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Apellido 1:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.last_name_1">{{ userEditable.last_name_1 || 'empty' }}</a>
+					</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Apellido 2:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.last_name_2">{{ userEditable.last_name_2 || 'empty' }}</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Cédula:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.cedula">{{ userEditable.cedula || 'empty' }}</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Email:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.email">{{ userEditable.email || 'empty' }}</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Telefono:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-text="userEditable.phone">{{ userEditable.phone || 'empty' }}</a>
+						</p>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Rol:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-select="userEditable.rol" e-ng-options="s.value as s.text for s in rolList" ng-if="userEditable">
+						{{ showStatus(user) }}
+						</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">Activo:</label>
+					<div class="col-sm-9">
+						<p class="form-control-static">
+						<a editable-checkbox="userEditable.active" e-title="Activo?">
+						{{ userEditable.active && "Activo" || "Inactivo" }}
+						</a>
+						</p>
+					</div>
+				</div>
+
+				<div style="display:inline-block;margin:auto;position:relative;left:50%;transform:translateX(-50%);">
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw green" data-toggle="modal" data-target="#edit-modal" ng-click="editUser(user._id)">Aceptar<div class="md-ripple-container"></div></button>
+					<button md-ink-ripple="" class="md-btn md-raised m-b btn-fw red" data-toggle="modal" data-target="#edit-modal" >Cancelar<div class="md-ripple-container"></div></button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

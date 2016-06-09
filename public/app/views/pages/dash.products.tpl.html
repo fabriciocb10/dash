@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-sm-4" ng-repeat="product in products">
+		<div class="panel panel-card" ng-click="goToTables(product._id)">
+			<div class="item">
+				<img class="w-full r-t" ng-src="images/{{ imgUrlFormt(product.name) }}.png">
+			</div>
+			<div class="p">
+				<h3>{{product.name | capitalize}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
