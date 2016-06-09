@@ -7,7 +7,7 @@
  - Gulp: *npm install -g gulp*
 
 ## Instalacion ##
-git clone https://github.com/Trtinteractive/Dashboard.git
+
 
 ## Instalacion de dependencias ##
 npm install && bower install
